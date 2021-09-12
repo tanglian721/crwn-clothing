@@ -22,9 +22,9 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   // const userRef = firestore.doc(`users/${userAuth.uid}`)
   const userRef = firestore.collection("users").doc(userAuth.uid);// 取得表格users的标识
-//   console.log(userRef);
+  console.log(userRef);
   const snapShot = await userRef.get(); //读取表格
-//   console.log(snapShot.exists);
+  console.log(snapShot.exists);
 //   console.log(snapShot.data());//读取表格的内容
 
   if(!snapShot.exists){
