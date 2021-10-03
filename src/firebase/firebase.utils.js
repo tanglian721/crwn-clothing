@@ -20,12 +20,12 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   if (!userAuth) return;
 
-  // const userRef = firestore.doc(`users/${userAuth.uid}`)
-  const userRef = firestore.collection("users").doc(userAuth.uid);// 取得表格users的标识
+  const userRef = firestore.doc(`users/${userAuth.uid}`)
+  // const userRef = firestore.collection("users").doc(userAuth.uid);// 取得表格users的标识
   console.log(userRef);
   const snapShot = await userRef.get(); //读取表格
   console.log(snapShot.exists);
-//   console.log(snapShot.data());//读取表格的内容
+  console.log(snapShot.data());//读取表格的内容
 
   if(!snapShot.exists){
       const { displayName, email } = userAuth;
@@ -38,13 +38,13 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
               ...additionalData
           }).then(async ()=>{
               const docu = await userRef.get();
-            //   docu.exists && console.log(docu.data())
+              docu.exists && console.log(docu.data())
           })
       } catch (error) {
           console.log('error creating user',error.message)
       }
   }
-//   console.log(userRef)
+  console.log(userRef)
 
   return userRef;
 };
