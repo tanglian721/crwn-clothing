@@ -45,7 +45,7 @@ const mapStateToProps = state => ({
 // const mapStateToProps = ({user:{ currentUser }, cart: { hidden }}) => ({
 //     currentUser,
 //     hidden,
-// })
+// })  和上面一种表达方式一样效果
 
 
 export default connect(mapStateToProps)(Header);
